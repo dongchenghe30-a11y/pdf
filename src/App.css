@@ -53,10 +53,12 @@ main {
   transition: all 0.3s ease;
   font-weight: 500;
   font-size: 14px;
+  white-space: nowrap;
 }
 
-.nav-links a:hover {
-  background: rgba(255, 255, 255, 0.1);
+.nav-links a:hover,
+.nav-links a.active {
+  background: rgba(255, 255, 255, 0.2);
   color: white;
 }
 
@@ -730,43 +732,222 @@ main {
   .nav-links {
     flex-wrap: wrap;
     justify-content: center;
+    gap: 4px;
+  }
+
+  .nav-links a {
+    padding: 6px 10px;
+    font-size: 13px;
+  }
+
+  .hero {
+    padding: 60px 16px;
   }
 
   .hero-title {
     font-size: 32px;
+    line-height: 1.3;
   }
 
   .hero-subtitle {
     font-size: 18px;
+    margin-bottom: 12px;
   }
 
-  .tools-grid,
+  .hero-description {
+    font-size: 16px;
+  }
+
+  .tools-section,
+  .features-section {
+    padding: 40px 16px;
+  }
+
+  .section-title {
+    font-size: 28px;
+    margin-bottom: 32px;
+  }
+
+  /* 移动端工具卡片优化 - 改为2列网格布局 */
+  .tools-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+    padding: 0 4px;
+  }
+
+  .tool-card {
+    padding: 20px 12px;
+    min-height: 160px;
+  }
+
+  .tool-icon {
+    width: 56px;
+    height: 56px;
+  }
+
+  .tool-icon svg {
+    width: 32px;
+    height: 32px;
+  }
+
+  .tool-card h3 {
+    font-size: 16px;
+    margin-bottom: 4px;
+  }
+
+  .tool-card p {
+    font-size: 12px;
+    line-height: 1.4;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+
+  /* 移动端特性卡片优化 */
   .features-grid {
     grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .feature-card {
+    padding: 20px;
+  }
+
+  .feature-icon {
+    width: 56px;
+    height: 56px;
+    margin-bottom: 12px;
+  }
+
+  .feature-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+
+  .feature-card h3 {
+    font-size: 18px;
+  }
+
+  .feature-card p {
+    font-size: 14px;
+  }
+
+  .cta-section {
+    padding: 40px 16px;
+  }
+
+  .cta-card {
+    padding: 28px 20px;
+  }
+
+  .cta-card h2 {
+    font-size: 22px;
+    margin-bottom: 12px;
+  }
+
+  .cta-card p {
+    font-size: 16px;
+  }
+
+  /* 工具页面移动端优化 */
+  .tool-page {
+    padding: 24px 16px;
   }
 
   .tool-header h1 {
     font-size: 28px;
+    margin-bottom: 12px;
+  }
+
+  .tool-header p {
+    font-size: 16px;
   }
 
   .tool-content {
-    padding: 20px;
+    padding: 20px 16px;
   }
 
   .rotation-buttons {
     flex-direction: column;
+    gap: 8px;
   }
 
   .format-grid {
     grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+
+  .format-option {
+    padding: 16px 12px;
   }
 
   .security-type-buttons {
     grid-template-columns: 1fr;
+    gap: 12px;
+  }
+
+  .security-type-btn {
+    padding: 20px;
+  }
+
+  .form-group input,
+  .form-group select {
+    font-size: 16px; /* 防止iOS自动缩放 */
+  }
+
+  .tool-content .btn {
+    width: 100%;
+    margin-right: 0;
+    margin-top: 16px;
+  }
+
+  .tool-content .btn + .btn {
+    margin-left: 0;
   }
 }
 
 @media (max-width: 480px) {
+  /* 480px以下设备，工具卡片改为1列 */
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: 12px;
+    padding: 0;
+  }
+
+  .tool-card {
+    padding: 24px;
+    min-height: auto;
+    display: grid;
+    grid-template-columns: auto 1fr;
+    gap: 16px;
+    align-items: center;
+    text-align: left;
+  }
+
+  .tool-icon {
+    width: 64px;
+    height: 64px;
+    margin: 0;
+  }
+
+  .tool-icon svg {
+    width: 36px;
+    height: 36px;
+  }
+
+  .tool-card h3 {
+    font-size: 18px;
+    grid-column: 2;
+    margin-bottom: 4px;
+  }
+
+  .tool-card p {
+    font-size: 13px;
+    grid-column: 2;
+    -webkit-line-clamp: 3;
+  }
+
   .format-grid {
     grid-template-columns: 1fr;
   }
@@ -778,5 +959,52 @@ main {
 
   .nav-links a {
     padding: 8px 12px;
+    width: 100%;
+    text-align: center;
+  }
+
+  .hero-title {
+    font-size: 28px;
+  }
+
+  .hero-subtitle {
+    font-size: 16px;
+  }
+
+  .section-title {
+    font-size: 24px;
+  }
+
+  .tool-header h1 {
+    font-size: 24px;
+  }
+
+  .compression-levels {
+    gap: 8px;
+  }
+
+  .level-option {
+    padding: 12px;
+  }
+
+  .level-option strong {
+    font-size: 14px;
+  }
+
+  .level-option p {
+    font-size: 12px;
+  }
+
+  .password-requirements {
+    padding: 12px;
+  }
+
+  .password-requirements h4 {
+    font-size: 14px;
+  }
+
+  .password-requirements li {
+    font-size: 12px;
+    padding: 2px 0;
   }
 }
