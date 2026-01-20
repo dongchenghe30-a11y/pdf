@@ -24,5 +24,8 @@ export default defineConfig({
   },
   optimizeDeps: {
     include: ['pdf-lib', 'react-router-dom', 'file-saver']
-  }
+  },
+  // 确保正确的入口点配置
+  root: '.',
+  publicDir: 'public'
 })
